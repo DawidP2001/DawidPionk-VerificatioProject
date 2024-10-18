@@ -1,38 +1,36 @@
 import java.util.ArrayList;
+import java.math.BigDecimal;
 
 public class Rate {
     private CarParkKind kind;
-    private double hourlyNormalRate;
-    private double hourlyReducedRate;
+    private BigDecimal hourlyNormalRate;
+    private BigDecimal hourlyReducedRate;
 
     public Rate(
         CarParkKind kind,
         ArrayList<Period> reducedPeriods,
         ArrayList<Period> normalPeriods,
-        double normalRate,
-        double reducedRate
+        BigDecimal normalRate,
+        BigDecimal reducedRate
     ){
 
     }
     public void setKind(CarParkKind kind) {
         this.kind = kind;
     };
-    public void setHourlyNormalRate(double hourlyNormalRate) {
+    public void setHourlyNormalRate(BigDecimal hourlyNormalRate) {
         this.hourlyNormalRate = hourlyNormalRate;
     }
-    public void setHourlyReducedRate(double hourlyReducedRate) {
+    public void setHourlyReducedRate(BigDecimal hourlyReducedRate) {
         this.hourlyReducedRate = hourlyReducedRate;
     }
-    public double getHourlyNormalRate() {
-        return hourlyNormalRate;
-    }
-    public double getHourlyReducedRate() {
-        return hourlyReducedRate;
+    public BigDecimal getHourlyReducedRate() {
+        return null;
     }
     public CarParkKind getKind() {
-        return kind;
+        return null;
     }
-    public double calculate(Period period){
-        return 0.0;
+    public BigDecimal calculate(Period period){
+        return null;
     }
 }

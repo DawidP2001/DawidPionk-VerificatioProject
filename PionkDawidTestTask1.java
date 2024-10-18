@@ -14,10 +14,17 @@ import org.junit.Test;
 
 public class PionkDawidTestTask1 {
     public class RateTest{
+        @Before
+        public void setUp(){
+          
+        }
+        // Below are test cases for the Rate() method
         @Test
         public void testRate(){
 
         }
+
+        // Below are test cases for the calculate() method
         @Test
         public void testCalculate(){
 
@@ -26,6 +33,7 @@ public class PionkDawidTestTask1 {
     }
     public class PeriodTest{
         private Period period;
+        private Period period2;
 
         @Before
         public void setUp(){
@@ -118,5 +126,17 @@ public class PionkDawidTestTask1 {
         }
         
         // Below are Test Cases for the overlap class
+        // Test Case 1: Valid Overlap
+        public void testOverlapValidOverlap(){
+            period = new Period(10,11);
+            period2 = new Period(10,11);
+            assertTrue("period should overlap with period2", period.overlap(period2));
+        }
+        // Test Case 2: valid nonOverlap
+        public void testOverlapValidNonOverlap(){
+            period = new Period(10,11);
+            period2 = new Period(11,12);
+            assertFalse("period should not overlap with period2", period.overlap(period2));
+        }
     }
 }
