@@ -1,3 +1,6 @@
-public class CarParkKind {
-    
+public enum CarParkKind {
+    STAFF,
+    STUDENT,
+    MANAGEMENT,
+    VISITOR
 }

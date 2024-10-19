@@ -27,6 +27,9 @@ public class Rate {
     public BigDecimal getHourlyReducedRate() {
         return null;
     }
+    public BigDecimal getHourlyNormalRate() {
+        return hourlyNormalRate;
+    }
     public CarParkKind getKind() {
         return null;
     }
