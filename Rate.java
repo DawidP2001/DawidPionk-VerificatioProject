@@ -13,7 +13,9 @@ public class Rate {
         BigDecimal normalRate,
         BigDecimal reducedRate
     ){
-
+        setKind(kind);
+        setHourlyNormalRate(normalRate);
+        setHourlyReducedRate(reducedRate);
     }
     public void setKind(CarParkKind kind) {
         this.kind = kind;

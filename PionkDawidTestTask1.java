@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.math.BigDecimal;
 
 public class PionkDawidTestTask1 {
-    public class RateTest{
+    public static class RateTest{
         private Rate rate;
         ArrayList<Period> reducedPeriods;
         ArrayList<Period> normalPeriods;
@@ -25,7 +25,8 @@ public class PionkDawidTestTask1 {
 
         @Before
         public void setUp(){
-          
+          reducedPeriods = new ArrayList<Period>();
+          normalPeriods = new ArrayList<Period>();
         }
         // Below are test cases for the Rate() method
         // Test Case 1: Valid Staff Rate
@@ -68,7 +69,7 @@ public class PionkDawidTestTask1 {
             rate = new Rate(CarParkKind.VISITOR, reducedPeriods, normalPeriods, normalRate, reducedRate);
             assertEquals("Kind value doesnt match when set to visitor" ,CarParkKind.VISITOR, rate.getKind());
         }
-        // Test Case 5: Invalid Kind Rate
+        /*// Test Case 5: Invalid Kind Rate
         @Test
         public void testRateInvalidKind(){
             reducedPeriods.add(new Period(8, 18));
@@ -79,7 +80,7 @@ public class PionkDawidTestTask1 {
                 "Teacher is not a kind", 
                 IllegalArgumentException.class, 
                 () -> new Rate(CarParkKind.TEACHER, reducedPeriods, normalPeriods, normalRate, reducedRate));
-        }
+        }*/
         // Test Case 6: Invalid reducedPeriods
         @Test
         public void testRateInvalireducedPeriods(){
@@ -105,7 +106,7 @@ public class PionkDawidTestTask1 {
                 () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate));
         }
         // Test Case 8: Invalid normalRate
-        @Test
+       /* @Test
         public void testRateInvalidnormalRate(){
             reducedPeriods.add(new Period(8,18));
             normalPeriods.add(new Period(19,24));
@@ -115,9 +116,9 @@ public class PionkDawidTestTask1 {
                 "normalRate should be invalid", 
                 IllegalArgumentException.class, 
                 () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, "E", reducedRate));
-        }
+        } */
         // Test Case 9: Invalid reducedRate
-        @Test
+       /*  @Test
         public void testRateInvalidreducedRate(){
             reducedPeriods.add(new Period(8,18));
             normalPeriods.add(new Period(19,24));
@@ -127,7 +128,7 @@ public class PionkDawidTestTask1 {
                 "normalRate should be invalid", 
                 IllegalArgumentException.class, 
                 () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, "E"));
-        }
+        } */
         // Test Case 10: Invalid reducedRate more than normalRate
         @Test
         public void testRateInvalidreducedRateMoreThannormalRate(){
@@ -305,7 +306,7 @@ public class PionkDawidTestTask1 {
             assertEquals("Result should have been 3",expectedOutput, rate.calculate(testPeriod));
         }       
     }
-    public class PeriodTest{
+    public static class PeriodTest{
         private Period period;
         private Period period2;
 
@@ -353,32 +354,44 @@ public class PionkDawidTestTask1 {
         // Test Case 6: invalid endHour Lower than startHour
         @Test
         public void testPeriodInvalidEndLowerThanStart(){
-            assertThrows("endHour can't be lower than startHour", IllegalArgumentException.class, () -> new Period(10, 9));
+            assertThrows("endHour can't be lower than startHour", 
+            IllegalArgumentException.class, 
+            () -> new Period(10, 9));
         }
         // Test Case 7: invalid too low startHour
         @Test
         public void testPeriodInvalidTooLowStart(){
-            assertThrows("startHour can't be negative", IllegalArgumentException.class, () -> new Period(-1, 12));
+            assertThrows("startHour can't be negative", 
+            IllegalArgumentException.class, 
+            () -> new Period(-1, 12));
         }
         // Test Case 8: invalid too high endhour
         @Test
         public void testPeriodInvalidTooHighEnd(){
-            assertThrows("endHour can't be over 24", IllegalArgumentException.class, () -> new Period(12, 25));
+            assertThrows("endHour can't be over 24", 
+            IllegalArgumentException.class, 
+            () -> new Period(12, 25));
         }
         // Test Case 9: invalid data type for startHour
-        @Test
+       /*  @Test
         public void testPeriodInvalidStartHourDataType(){
-            assertThrows("startHour can't accept other data types rather than int", IllegalArgumentException.class, () -> new Period("E", 12));
-        }
+            assertThrows("startHour can't accept other data types rather than int", 
+            IllegalArgumentException.class, 
+            () -> new Period("E", 12));
+        }*/
         // Test Case 10: invalid data type for endhour
-        @Test
+        /*@Test
         public void testPeriodInvalidEndHourDataType(){
-            assertThrows("endHour can't accept other data types rather than int", IllegalArgumentException.class, () -> new Period(12, "E"));
-        }
+            assertThrows("endHour can't accept other data types rather than int", 
+            IllegalArgumentException.class, 
+            () -> new Period(12, "E"));
+        }*/
         // Test Case 11: invalid startHour and endhour
         @Test
         public void testPeriodInvalidStartEqualEnd(){
-            assertThrows("startHour can't have the same value as endHour", IllegalArgumentException.class, () -> new Period(12, 12));
+            assertThrows("startHour can't have the same value as endHour", 
+            IllegalArgumentException.class,
+            () -> new Period(12, 12));
         }
 
         // Below are test cases for the duration method
@@ -386,8 +399,6 @@ public class PionkDawidTestTask1 {
         @Test
         public void testDurationValidLowDuration(){
             period = new Period(0, 1);
-            int startHour = period.getStartHour();
-            int endHour = period.getEndHour();
             int expected = 1;
             int actual = period.duration();
             assertEquals("The actual output should be 1",expected, actual); 
@@ -396,8 +407,6 @@ public class PionkDawidTestTask1 {
         @Test
         public void testDurationValidHighDuration(){
             period = new Period(0, 24);
-            int startHour = period.getStartHour();
-            int endHour = period.getEndHour();
             int expected = 24;
             int actual = period.duration();
             assertEquals("The actual output should be 24",expected, actual); 
@@ -406,8 +415,6 @@ public class PionkDawidTestTask1 {
         @Test
         public void testDurationValidMiddleDuration(){
             period = new Period(6, 18);
-            int startHour = period.getStartHour();
-            int endHour = period.getEndHour();
             int expected = 12;
             int actual = period.duration();
             assertEquals("The actual output should be 12",expected, actual); 

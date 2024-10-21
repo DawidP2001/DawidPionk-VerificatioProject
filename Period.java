@@ -6,6 +6,9 @@ public class Period {
         setStartHour(startHour);
         setEndHour(endHour);
     }
+    public Period(){
+        
+    }
     public void setStartHour(int startHour) {
         this.startHour = startHour;
     }
