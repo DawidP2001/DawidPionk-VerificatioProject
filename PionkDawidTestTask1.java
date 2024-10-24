@@ -69,67 +69,30 @@ public class PionkDawidTestTask1 {
             rate = new Rate(CarParkKind.VISITOR, reducedPeriods, normalPeriods, normalRate, reducedRate);
             assertEquals("Kind value doesnt match when set to visitor" ,CarParkKind.VISITOR, rate.getKind());
         }
-        /*// Test Case 5: Invalid Kind Rate
-        @Test
-        public void testRateInvalidKind(){
-            reducedPeriods.add(new Period(8, 18));
-            normalPeriods.add(new Period(19, 24));
-            normalRate = new BigDecimal(2.1);
-            reducedRate = new BigDecimal(1.1);
-            assertThrows(
-                "Teacher is not a kind", 
-                IllegalArgumentException.class, 
-                () -> new Rate(CarParkKind.TEACHER, reducedPeriods, normalPeriods, normalRate, reducedRate));
-        }*/
-        // Test Case 6: Invalid reducedPeriods
+
+        // Test Case 5: Invalid null reducedPeriods
         @Test
         public void testRateInvalireducedPeriods(){
-            reducedPeriods.add(new Period());
             normalPeriods.add(new Period(19, 24));
             normalRate = new BigDecimal(2.1);
             reducedRate = new BigDecimal(1.1);
             assertThrows(
                 "Reduced Period should be invalid", 
                 IllegalArgumentException.class, 
-                () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate));
+                () -> new Rate(CarParkKind.STUDENT, null, normalPeriods, normalRate, reducedRate));
         }
-        // Test Case 7: Invalid normalPeriods
+        // Test Case 6: Invalid null normalPeriods
         @Test
         public void testRateInvalidnormalPeriods(){
             reducedPeriods.add(new Period(8,18));
-            normalPeriods.add(new Period());
             normalRate = new BigDecimal(2.1);
             reducedRate = new BigDecimal(1.1);
             assertThrows(
                 "Normal Period should be invalid", 
                 IllegalArgumentException.class, 
-                () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate));
+                () -> new Rate(CarParkKind.STUDENT, reducedPeriods, null, normalRate, reducedRate));
         }
-        // Test Case 8: Invalid normalRate
-       /* @Test
-        public void testRateInvalidnormalRate(){
-            reducedPeriods.add(new Period(8,18));
-            normalPeriods.add(new Period(19,24));
-            normalRate = new BigDecimal(2.1);
-            reducedRate = new BigDecimal(1.1);
-            assertThrows(
-                "normalRate should be invalid", 
-                IllegalArgumentException.class, 
-                () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, "E", reducedRate));
-        } */
-        // Test Case 9: Invalid reducedRate
-       /*  @Test
-        public void testRateInvalidreducedRate(){
-            reducedPeriods.add(new Period(8,18));
-            normalPeriods.add(new Period(19,24));
-            normalRate = new BigDecimal(2.1);
-            reducedRate = new BigDecimal(1.1);
-            assertThrows(
-                "normalRate should be invalid", 
-                IllegalArgumentException.class, 
-                () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, "E"));
-        } */
-        // Test Case 10: Invalid reducedRate more than normalRate
+        // Test Case 7: Invalid reducedRate more than normalRate
         @Test
         public void testRateInvalidreducedRateMoreThannormalRate(){
             reducedPeriods.add(new Period(8,18));
@@ -141,7 +104,7 @@ public class PionkDawidTestTask1 {
                 IllegalArgumentException.class, 
                 () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate));
         }
-        // Test Case 11: Valid Low reducedRate
+        // Test Case 8: Valid Low reducedRate
         @Test
         public void testRateValidLowreducedRate(){
             reducedPeriods.add(new Period(8,18));
@@ -151,7 +114,7 @@ public class PionkDawidTestTask1 {
             rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
             assertEquals("Hourly reduced rate failed to be set to 0",reducedRate, rate.getHourlyReducedRate());
         }
-        // Test Case 12: Invalid too low reducedRate
+        // Test Case 9: Invalid too low reducedRate
         @Test
         public void testRateInvalidLowReducedRate(){
             reducedPeriods.add(new Period(8,18));
@@ -163,7 +126,7 @@ public class PionkDawidTestTask1 {
                 IllegalArgumentException.class, 
                 () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate));
         }
-        // Test Case 13: Valid high normalRate
+        // Test Case 10: Valid high normalRate
         @Test
         public void testRateValidHighNormalRate(){
             reducedPeriods.add(new Period(8,18));
@@ -173,7 +136,7 @@ public class PionkDawidTestTask1 {
             rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
             assertEquals("Hourly normal rate failed to be set to 10",normalRate, rate.getHourlyNormalRate());
         }
-        // Test Case 14: Invalid too high normalRate
+        // Test Case 11: Invalid too high normalRate
         @Test
         public void testRateInvalidTooHighNormalRate(){
             reducedPeriods.add(new Period(8,18));
@@ -185,7 +148,7 @@ public class PionkDawidTestTask1 {
                 IllegalArgumentException.class, 
                 () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate));
         }
-        // Test Case 15: Valid high reducedRate
+        // Test Case 12: Valid high reducedRate
         @Test
         public void testRateValidHighReducedRate(){
             reducedPeriods.add(new Period(8,18));
@@ -195,7 +158,7 @@ public class PionkDawidTestTask1 {
             rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
             assertEquals("Hourly normal rate failed to be set to 10",reducedRate, rate.getHourlyReducedRate());
         }
-        // Test Case 16: Valid low normalRate
+        // Test Case 13: Valid low normalRate
         @Test
         public void testRateValidLowNormalRate(){
             reducedPeriods.add(new Period(8,18));
@@ -205,7 +168,7 @@ public class PionkDawidTestTask1 {
             rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
             assertEquals("Hourly normal rate failed to be set to 10",normalRate, rate.getHourlyNormalRate());
         }
-        // Test Case 17: Invalid reducedPeriods overlap themselves
+        // Test Case 14: Invalid reducedPeriods overlap themselves
         @Test
         public void testRateInvalidReducedPeriodsOverlap(){
             reducedPeriods.add(new Period(8,18));
@@ -218,7 +181,7 @@ public class PionkDawidTestTask1 {
                 IllegalArgumentException.class, 
                 () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate));
         }
-        // Test Case 18: Invalid normalPeriods overlap themselves
+        // Test Case 15: Invalid normalPeriods overlap themselves
         @Test
         public void testRateInvalidNormalPeriodsOverlap(){
             reducedPeriods.add(new Period(19,24));
@@ -231,7 +194,7 @@ public class PionkDawidTestTask1 {
                 IllegalArgumentException.class, 
                 () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate));
         }
-        // Test Case 19: Invalid normalPeriods overlap with reducedPeriods
+        // Test Case 16: Invalid normalPeriods overlap with reducedPeriods
         @Test
         public void testRateInvalidNormalPeriodsOverlapReducedPeriods(){
             reducedPeriods.add(new Period(8,18));
@@ -240,6 +203,18 @@ public class PionkDawidTestTask1 {
             reducedRate = new BigDecimal(1.1);
             assertThrows(
                 "reducedPeriods should not be allowed to overlap with normalPeriods", 
+                IllegalArgumentException.class, 
+                () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate));
+        }
+        // Test Case 17: invalid reducedRate equal normalRate
+        @Test
+        public void testRateInvalidReducedRateEqualNormalRates(){
+            reducedPeriods.add(new Period(8,18));
+            normalPeriods.add(new Period(17,24));
+            normalRate = new BigDecimal(2.1);
+            reducedRate = new BigDecimal(2.1);
+            assertThrows(
+                "reducedRates and normalRates can't be equal", 
                 IllegalArgumentException.class, 
                 () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate));
         }
@@ -372,21 +347,7 @@ public class PionkDawidTestTask1 {
             IllegalArgumentException.class, 
             () -> new Period(12, 25));
         }
-        // Test Case 9: invalid data type for startHour
-       /*  @Test
-        public void testPeriodInvalidStartHourDataType(){
-            assertThrows("startHour can't accept other data types rather than int", 
-            IllegalArgumentException.class, 
-            () -> new Period("E", 12));
-        }*/
-        // Test Case 10: invalid data type for endhour
-        /*@Test
-        public void testPeriodInvalidEndHourDataType(){
-            assertThrows("endHour can't accept other data types rather than int", 
-            IllegalArgumentException.class, 
-            () -> new Period(12, "E"));
-        }*/
-        // Test Case 11: invalid startHour and endhour
+        // Test Case 9: invalid startHour and endhour
         @Test
         public void testPeriodInvalidStartEqualEnd(){
             assertThrows("startHour can't have the same value as endHour", 
@@ -421,19 +382,49 @@ public class PionkDawidTestTask1 {
         }
         
         // Below are Test Cases for the overlap class
-        // Test Case 1: Valid Overlap
+        // Test Case 1: Valid Overlap values the same
         @Test
-        public void testOverlapValidOverlap(){
+        public void testOverlapValidOverlapEqualValues(){
             period = new Period(10,11);
             period2 = new Period(10,11);
             assertTrue("period should overlap with period2", period.overlap(period2));
         }
-        // Test Case 2: valid nonOverlap
+        // Test Case 2: valid nonOverlap Small difference
         @Test
-        public void testOverlapValidNonOverlap(){
+        public void testOverlapValidNonOverlapSmallDifference(){
             period = new Period(10,11);
             period2 = new Period(11,12);
             assertFalse("period should not overlap with period2", period.overlap(period2));
+        }
+        // Test Case 3: invalid period is null
+        @Test
+        public void testOverlapInvalidPeriodNull(){
+            period = new Period(10,11);
+            period2 = null;
+            assertThrows("Passed in Period is not allowed to be null", 
+            IllegalArgumentException.class,
+            () -> period.overlap(period2));
+        }
+        // Test Case 4: Valid NonOverlap large difference
+        @Test
+        public void testOverlapValidNonOverlapLargeDifference(){
+            period = new Period(10,11);
+            period2 = new Period(11,12);
+            assertFalse("Periods don't overlap so Should be false", period.overlap(period2));
+        }
+        // Test Case 5: Valid Overlap currentPeriod high
+        @Test
+        public void testOverlapValidOverlapCurrentPeriodHigh(){
+            period = new Period(0,24);
+            period2 = new Period(11,12);
+            assertTrue("period should overlap with period2", period.overlap(period2));
+        }
+        // Test Case 6: Valid Overlap period high
+        @Test
+        public void testOverlapValidNonOverlapPeriodHigh(){
+            period = new Period(11,12);
+            period2 = new Period(0,24);
+            assertFalse("periods aren't overlaping", period.overlap(period2));
         }
     }
 }
