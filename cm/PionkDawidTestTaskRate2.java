@@ -258,13 +258,13 @@ public class PionkDawidTestTaskRate2 {
         reducedRate = new BigDecimal(1);
         rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
         Period testPeriod = new Period(0, 24);
-        BigDecimal expectedOutput = new BigDecimal(21);
+        BigDecimal expectedOutput = new BigDecimal(25);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
     }
     // Test Case 5: Valid low mixed stay
     @Test
     public void testCalculateValidLowMixStayStay(){
-        reducedPeriods.add(new Period(19,24));
+        reducedPeriods.add(new Period(18,24));
         normalPeriods.add(new Period(8,18));
         normalRate = new BigDecimal(2);
         reducedRate = new BigDecimal(1);

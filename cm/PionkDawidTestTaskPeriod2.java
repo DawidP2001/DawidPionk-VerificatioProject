@@ -10,10 +10,6 @@ public class PionkDawidTestTaskPeriod2 {
     private Period period;
     private Period period2;
 
-    @BeforeEach
-    public void setUp(){
-        //  period = new Period();
-    }
     // Below are test cases for the period method
     // Test Case 1: valid low startHour
     @Test
@@ -148,6 +144,6 @@ public class PionkDawidTestTaskPeriod2 {
     public void testOverlapValidNonOverlapPeriodHigh(){
         period = new Period(11,12);
         period2 = new Period(0,24);
-        assertFalse(period.overlaps(period2));
+        assertTrue(period.overlaps(period2));
     }
 }
