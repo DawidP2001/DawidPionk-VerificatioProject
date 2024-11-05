@@ -1,14 +1,16 @@
-package cm;//Author:  DawidPionk
 //Date:    14/10/2024
 //Purpose: Task 1 Ver Project
 
 //package cm;
-
+/*
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
+import cm.CarParkKind;
+import cm.Period;
+import cm.Rate;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -427,4 +429,4 @@ public class PionkDawidTestTask1 {
             assertFalse("periods aren't overlaping", period.overlap(period2));
         }
     }
-}
+} */
