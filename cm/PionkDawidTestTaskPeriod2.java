@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PionkDawidTestTaskPeriod2 {
@@ -72,6 +75,24 @@ public class PionkDawidTestTaskPeriod2 {
             IllegalArgumentException.class,
             () -> new Period(12, 12)
         );
+    }
+    // Test Case 10: Invalid startHour over 24
+    @Test
+    public void testPeriodInvalidStartEqualOver24(){
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Period(25, 26)
+        );
+    }
+    // Test Cases for the occurences class
+    // Test Case 1: Valid Checks whether the occurences Branch was accessed
+    @Test
+    public void testOccurencesValidCheckOccurencesBranch(){
+        ArrayList<Period> list = new ArrayList<Period>();
+        list.add(new Period(1,10));
+        list.add(new Period(11,15));
+        period = new Period(1,8);
+        assertEquals(7, period.occurences(list));
     }
 
     // Below are test cases for the duration method
