@@ -354,4 +354,33 @@ public class PionkDawidTestTaskRate2 {
         BigDecimal expectedOutput = new BigDecimal(0);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
     }
+    // Test Case 7: Valid Check multiple reducedPeriods
+    @Test
+    public void testCalculateValidMultipleReducedPeriods(){
+        reducedPeriods.add(new Period(1,10));
+        reducedPeriods.add(new Period(11,15));
+        normalPeriods.add(new Period(22,23));
+        normalRate = new BigDecimal(2);
+        reducedRate = new BigDecimal(1);
+        rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
+        Period testPeriod = new Period(1,8);
+        BigDecimal expectedOutput = new BigDecimal(7);
+        assertEquals(expectedOutput, rate.calculate(testPeriod));
+    }
+
+
+    ////////////////// Testing Area BElOW ////////////////////////
+    // Test Case 7: Valid Check multiple reducedPeriods
+    @Test
+    public void testCalculateValidMultipleReducedPeriods123(){
+        normalPeriods.add(new Period(22,23));
+        normalPeriods.add(new Period(21,22));
+        normalPeriods.add(new Period(10,11));
+        normalRate = new BigDecimal(2);
+        reducedRate = new BigDecimal(1);
+        rate = new Rate(CarParkKind.STUDENT, null, normalPeriods, normalRate, reducedRate);
+        Period testPeriod = new Period(0,24);
+        BigDecimal expectedOutput = new BigDecimal(19);
+        assertEquals(expectedOutput, rate.calculate(testPeriod));
+    }
 }
