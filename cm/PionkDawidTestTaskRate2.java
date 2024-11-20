@@ -27,8 +27,8 @@ public class PionkDawidTestTaskRate2 {
     public void testRateValidStaff(){
         reducedPeriods.add(new Period(8, 18));
         normalPeriods.add(new Period(19, 24));
-        normalRate = new BigDecimal(2.1);
-        reducedRate = new BigDecimal(1.1);
+        normalRate = BigDecimal.valueOf(2.1);
+        reducedRate = BigDecimal.valueOf(1.1);
         rate = new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, normalRate, reducedRate);
         assertNotNull(rate);
     }
@@ -37,8 +37,8 @@ public class PionkDawidTestTaskRate2 {
     public void testRateValidStudent(){
         reducedPeriods.add(new Period(8, 18));
         normalPeriods.add(new Period(19, 24));
-        normalRate = new BigDecimal(2.1);
-        reducedRate = new BigDecimal(1.1);
+        normalRate = BigDecimal.valueOf(2.1);
+        reducedRate = BigDecimal.valueOf(1.1);
         rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
         assertNotNull(rate);
     }
@@ -47,8 +47,8 @@ public class PionkDawidTestTaskRate2 {
     public void testRateValidManagement(){
         reducedPeriods.add(new Period(8, 18));
         normalPeriods.add(new Period(19, 24));
-        normalRate = new BigDecimal(2.1);
-        reducedRate = new BigDecimal(1.1);
+        normalRate = BigDecimal.valueOf(2.1);
+        reducedRate = BigDecimal.valueOf(1.1);
         rate = new Rate(CarParkKind.MANAGEMENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
         assertNotNull(rate);
     }
@@ -57,8 +57,8 @@ public class PionkDawidTestTaskRate2 {
     public void testRateValidVisitor(){
         reducedPeriods.add(new Period(8, 18));
         normalPeriods.add(new Period(19, 24));
-        normalRate = new BigDecimal(2.1);
-        reducedRate = new BigDecimal(1.1);
+        normalRate = BigDecimal.valueOf(2.1);
+        reducedRate = BigDecimal.valueOf(1.1);
         rate = new Rate(CarParkKind.VISITOR, reducedPeriods, normalPeriods, normalRate, reducedRate);
         assertNotNull(rate);
     }
@@ -67,8 +67,8 @@ public class PionkDawidTestTaskRate2 {
     @Test
     public void testRateInvalidReducedPeriods(){
         normalPeriods.add(new Period(19, 24));
-        normalRate = new BigDecimal(2.1);
-        reducedRate = new BigDecimal(1.1);
+        normalRate = BigDecimal.valueOf(2.1);
+        reducedRate = BigDecimal.valueOf(1.1);
         assertThrows(
             IllegalArgumentException.class, 
             () -> new Rate(CarParkKind.STUDENT, null, normalPeriods, normalRate, reducedRate)
@@ -78,8 +78,8 @@ public class PionkDawidTestTaskRate2 {
     @Test
     public void testRateInvalidNormalPeriods(){
         reducedPeriods.add(new Period(8,18));
-        normalRate = new BigDecimal(2.1);
-        reducedRate = new BigDecimal(1.1);
+        normalRate = BigDecimal.valueOf(2.1);
+        reducedRate = BigDecimal.valueOf(1.1);
         assertThrows(
             IllegalArgumentException.class, 
             () -> new Rate(CarParkKind.STUDENT, reducedPeriods, null, normalRate, reducedRate)
@@ -90,8 +90,8 @@ public class PionkDawidTestTaskRate2 {
     public void testRateInvalidReducedRateMoreThanNormalRate(){
         reducedPeriods.add(new Period(8,18));
         normalPeriods.add(new Period(19,24));
-        normalRate = new BigDecimal(1.1);
-        reducedRate = new BigDecimal(2.1);
+        normalRate = BigDecimal.valueOf(1.1);
+        reducedRate = BigDecimal.valueOf(2.1);
         assertThrows(
             IllegalArgumentException.class, 
             () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate)
@@ -102,8 +102,8 @@ public class PionkDawidTestTaskRate2 {
     public void testRateValidLowReducedRate(){
         reducedPeriods.add(new Period(8,18));
         normalPeriods.add(new Period(19,24));
-        normalRate = new BigDecimal(2.1);
-        reducedRate = new BigDecimal(0);
+        normalRate = BigDecimal.valueOf(2.1);
+        reducedRate = BigDecimal.valueOf(0);
         rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
         assertNotNull(rate);
     }
@@ -112,8 +112,8 @@ public class PionkDawidTestTaskRate2 {
     public void testRateInvalidLowReducedRate(){
         reducedPeriods.add(new Period(8,18));
         normalPeriods.add(new Period(19,24));
-        normalRate = new BigDecimal(2.1);
-        reducedRate = new BigDecimal(-1);
+        normalRate = BigDecimal.valueOf(2.1);
+        reducedRate = BigDecimal.valueOf(-1);
         assertThrows(
             IllegalArgumentException.class, 
             () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate)
@@ -124,8 +124,8 @@ public class PionkDawidTestTaskRate2 {
     public void testRateValidHighNormalRate(){
         reducedPeriods.add(new Period(8,18));
         normalPeriods.add(new Period(19,24));
-        normalRate = new BigDecimal(10);
-        reducedRate = new BigDecimal(1.1);
+        normalRate = BigDecimal.valueOf(10);
+        reducedRate = BigDecimal.valueOf(1.1);
         rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
         assertNotNull(rate);
     }
@@ -134,8 +134,8 @@ public class PionkDawidTestTaskRate2 {
     public void testRateInvalidTooHighNormalRate(){
         reducedPeriods.add(new Period(8,18));
         normalPeriods.add(new Period(19,24));
-        normalRate = new BigDecimal(11);
-        reducedRate = new BigDecimal(1.1);
+        normalRate = BigDecimal.valueOf(11);
+        reducedRate = BigDecimal.valueOf(1.1);
         assertThrows(
             IllegalArgumentException.class, 
             () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate)
@@ -146,8 +146,8 @@ public class PionkDawidTestTaskRate2 {
     public void testRateValidHighReducedRate(){
         reducedPeriods.add(new Period(8,18));
         normalPeriods.add(new Period(19,24));
-        normalRate = new BigDecimal(10);
-        reducedRate = new BigDecimal(8);
+        normalRate = BigDecimal.valueOf(10);
+        reducedRate = BigDecimal.valueOf(8);
         rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
         assertNotNull(rate);
     }
@@ -156,8 +156,8 @@ public class PionkDawidTestTaskRate2 {
     public void testRateValidLowNormalRate(){
         reducedPeriods.add(new Period(8,18));
         normalPeriods.add(new Period(19,24));
-        normalRate = new BigDecimal(0.1);
-        reducedRate = new BigDecimal(0);
+        normalRate = BigDecimal.valueOf(0.1);
+        reducedRate = BigDecimal.valueOf(0);
         rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
         assertNotNull(rate);
     }
@@ -167,8 +167,8 @@ public class PionkDawidTestTaskRate2 {
         reducedPeriods.add(new Period(8,18));
         reducedPeriods.add(new Period(16,18));
         normalPeriods.add(new Period(19,24));
-        normalRate = new BigDecimal(2.1);
-        reducedRate = new BigDecimal(1.1);
+        normalRate = BigDecimal.valueOf(2.1);
+        reducedRate = BigDecimal.valueOf(1.1);
         assertThrows(
             IllegalArgumentException.class, 
             () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate)
@@ -180,8 +180,8 @@ public class PionkDawidTestTaskRate2 {
         reducedPeriods.add(new Period(19,24));
         normalPeriods.add(new Period(8,18));
         normalPeriods.add(new Period(16,18));
-        normalRate = new BigDecimal(2.1);
-        reducedRate = new BigDecimal(1.1);
+        normalRate = BigDecimal.valueOf(2.1);
+        reducedRate = BigDecimal.valueOf(1.1);
         assertThrows(
             IllegalArgumentException.class, 
             () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate)
@@ -192,8 +192,8 @@ public class PionkDawidTestTaskRate2 {
     public void testRateInvalidNormalPeriodsOverlapReducedPeriods(){
         reducedPeriods.add(new Period(8,18));
         normalPeriods.add(new Period(17,24));
-        normalRate = new BigDecimal(2.1);
-        reducedRate = new BigDecimal(1.1);
+        normalRate = BigDecimal.valueOf(2.1);
+        reducedRate = BigDecimal.valueOf(1.1);
         assertThrows(
             IllegalArgumentException.class, 
             () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate)
@@ -204,8 +204,8 @@ public class PionkDawidTestTaskRate2 {
     public void testRateInvalidReducedRateEqualNormalRates(){
         reducedPeriods.add(new Period(8,18));
         normalPeriods.add(new Period(19,24));
-        normalRate = new BigDecimal(2.1);
-        reducedRate = new BigDecimal(2.1);
+        normalRate = BigDecimal.valueOf(2.1);
+        reducedRate = BigDecimal.valueOf(2.1);
         assertThrows(
             IllegalArgumentException.class,
             () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate)
@@ -218,7 +218,7 @@ public class PionkDawidTestTaskRate2 {
         reducedPeriods.add(new Period(8,18));
         normalPeriods.add(new Period(19,24));
         normalRate = null;
-        reducedRate = new BigDecimal(1.1);
+        reducedRate = BigDecimal.valueOf(1.1);
         assertThrows(
                 IllegalArgumentException.class,
                 () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate)
@@ -229,7 +229,7 @@ public class PionkDawidTestTaskRate2 {
     public void testRateInvalidReducedRateIsNull(){
         reducedPeriods.add(new Period(8,18));
         normalPeriods.add(new Period(17,24));
-        normalRate = new BigDecimal(2.1);
+        normalRate = BigDecimal.valueOf(2.1);
         reducedRate = null;
         assertThrows(
                 IllegalArgumentException.class,
@@ -241,8 +241,8 @@ public class PionkDawidTestTaskRate2 {
     public void testRateInvalidNormalRateIsNegative(){
         reducedPeriods.add(new Period(8,18));
         normalPeriods.add(new Period(19,24));
-        normalRate = new BigDecimal(-2.1);
-        reducedRate = new BigDecimal(1.1);
+        normalRate = BigDecimal.valueOf(-2.1);
+        reducedRate = BigDecimal.valueOf(1.1);
         assertThrows(
                 IllegalArgumentException.class,
                 () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate)
@@ -255,8 +255,8 @@ public class PionkDawidTestTaskRate2 {
         reducedPeriods.add(new Period(8,18));
         reducedPeriods.add(new Period(8,18));
         normalPeriods.add(new Period(19,24));
-        normalRate = new BigDecimal(2.1);
-        reducedRate = new BigDecimal(1.1);
+        normalRate = BigDecimal.valueOf(2.1);
+        reducedRate = BigDecimal.valueOf(1.1);
         assertThrows(
                 IllegalArgumentException.class,
                 () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate)
@@ -271,10 +271,52 @@ public class PionkDawidTestTaskRate2 {
         normalPeriods.add(new Period(5,6));
         normalPeriods.add(new Period(1,2));
         normalPeriods.add(new Period(11,12));
-        normalRate = new BigDecimal(2.1);
-        reducedRate = new BigDecimal(1.1);
-       //  rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
-       //  assertNotNull(rate);
+        normalRate = BigDecimal.valueOf(2.1);
+        reducedRate = BigDecimal.valueOf(1.1);
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate)
+        );
+    }
+    // Test Case 23: Invalid kind is null
+    @Test
+    public void testRateInvalidKindIsNull(){
+        reducedPeriods.add(new Period(8,18));
+        normalPeriods.add(new Period(19,24));
+        normalRate = BigDecimal.valueOf(2.1);
+        reducedRate = BigDecimal.valueOf(1.1);
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Rate(null, reducedPeriods, normalPeriods, normalRate, reducedRate)
+        );
+    }
+    // Test Case 24: valid normalPeriods is empty
+    @Test
+    public void testRateValidNormalPeriodsIsEmpty(){
+        reducedPeriods.add(new Period(8,18));
+        normalPeriods.add(new Period(19,24));
+        normalRate = BigDecimal.valueOf(2.1);
+        reducedRate = BigDecimal.valueOf(1.1);
+        rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
+        assertNotNull(rate);
+    }
+    // Test Case 25: valid reducedPeriods is empty
+    @Test
+    public void testRateValidReducedPeriodsIsEmpty(){
+        reducedPeriods.add(new Period(8,18));
+        normalPeriods.add(new Period(19,24));
+        normalRate = BigDecimal.valueOf(2.1);
+        reducedRate = BigDecimal.valueOf(1.1);
+        rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
+        assertNotNull(rate);
+    }
+    // Test Case 26: invalid reducedRate and normalRate too high
+    @Test
+    public void testRateInvalidReducedRateAndNormalRateTooHigh(){
+        reducedPeriods.add(new Period(8,18));
+        normalPeriods.add(new Period(19,24));
+        normalRate = BigDecimal.valueOf(12);
+        reducedRate = BigDecimal.valueOf(11);
         assertThrows(
                 IllegalArgumentException.class,
                 () -> new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate)
@@ -287,11 +329,11 @@ public class PionkDawidTestTaskRate2 {
     public void testCalculateValidNormalPeriodStay(){
         reducedPeriods.add(new Period(19,24));
         normalPeriods.add(new Period(8,18));
-        normalRate = new BigDecimal(2);
-        reducedRate = new BigDecimal(1);
+        normalRate = BigDecimal.valueOf(2);
+        reducedRate = BigDecimal.valueOf(1);
         rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
         Period testPeriod = new Period(10, 18);
-        BigDecimal expectedOutput = new BigDecimal(16);
+        BigDecimal expectedOutput = BigDecimal.valueOf(16);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
     }
     // Test Case 2: Valid reducedPeriod Stay
@@ -299,11 +341,11 @@ public class PionkDawidTestTaskRate2 {
     public void testCalculateValidReducedPeriodStay(){
         reducedPeriods.add(new Period(19,24));
         normalPeriods.add(new Period(8,18));
-        normalRate = new BigDecimal(2);
-        reducedRate = new BigDecimal(1);
+        normalRate = BigDecimal.valueOf(2);
+        reducedRate = BigDecimal.valueOf(1);
         rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
         Period testPeriod = new Period(19, 24);
-        BigDecimal expectedOutput = new BigDecimal(5);
+        BigDecimal expectedOutput = BigDecimal.valueOf(5);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
     }
     // Test Case 3: Valid Free Stay
@@ -311,11 +353,11 @@ public class PionkDawidTestTaskRate2 {
     public void testCalculateValidFreeStay(){
         reducedPeriods.add(new Period(19,24));
         normalPeriods.add(new Period(8,18));
-        normalRate = new BigDecimal(2);
-        reducedRate = new BigDecimal(1);
+        normalRate = BigDecimal.valueOf(2);
+        reducedRate = BigDecimal.valueOf(1);
         rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
         Period testPeriod = new Period(0, 7);
-        BigDecimal expectedOutput = new BigDecimal(0);
+        BigDecimal expectedOutput = BigDecimal.valueOf(0);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
     }
     // Test Case 4: Valid full day stay
@@ -323,11 +365,11 @@ public class PionkDawidTestTaskRate2 {
     public void testCalculateValidFullDayStay(){
         reducedPeriods.add(new Period(19,24));
         normalPeriods.add(new Period(8,18));
-        normalRate = new BigDecimal(2);
-        reducedRate = new BigDecimal(1);
+        normalRate = BigDecimal.valueOf(2);
+        reducedRate = BigDecimal.valueOf(1);
         rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
         Period testPeriod = new Period(0, 24);
-        BigDecimal expectedOutput = new BigDecimal(25);
+        BigDecimal expectedOutput = BigDecimal.valueOf(25);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
     }
     // Test Case 5: Valid low mixed stay
@@ -335,11 +377,11 @@ public class PionkDawidTestTaskRate2 {
     public void testCalculateValidLowMixStayStay(){
         reducedPeriods.add(new Period(18,24));
         normalPeriods.add(new Period(8,18));
-        normalRate = new BigDecimal(2);
-        reducedRate = new BigDecimal(1);
+        normalRate = BigDecimal.valueOf(2);
+        reducedRate = BigDecimal.valueOf(1);
         rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
         Period testPeriod = new Period(17, 19);
-        BigDecimal expectedOutput = new BigDecimal(3);
+        BigDecimal expectedOutput = BigDecimal.valueOf(3);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
     }
     // Test Case 6: Valid Visitor Stay
@@ -347,11 +389,11 @@ public class PionkDawidTestTaskRate2 {
     public void testCalculateValidVisitorStay(){
         reducedPeriods.add(new Period(18,24));
         normalPeriods.add(new Period(8,18));
-        normalRate = new BigDecimal(2);
-        reducedRate = new BigDecimal(1);
+        normalRate = BigDecimal.valueOf(2);
+        reducedRate = BigDecimal.valueOf(1);
         rate = new Rate(CarParkKind.VISITOR, reducedPeriods, normalPeriods, normalRate, reducedRate);
         Period testPeriod = new Period(17, 19);
-        BigDecimal expectedOutput = new BigDecimal(0);
+        BigDecimal expectedOutput = BigDecimal.valueOf(0);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
     }
     // Test Case 7: Valid Check multiple reducedPeriods
@@ -360,27 +402,40 @@ public class PionkDawidTestTaskRate2 {
         reducedPeriods.add(new Period(1,10));
         reducedPeriods.add(new Period(11,15));
         normalPeriods.add(new Period(22,23));
-        normalRate = new BigDecimal(2);
-        reducedRate = new BigDecimal(1);
+        normalRate = BigDecimal.valueOf(2);
+        reducedRate = BigDecimal.valueOf(1);
         rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
         Period testPeriod = new Period(1,8);
-        BigDecimal expectedOutput = new BigDecimal(7);
+        BigDecimal expectedOutput = BigDecimal.valueOf(7);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
     }
-
-
-    ////////////////// Testing Area BElOW ////////////////////////
-    // Test Case 7: Valid Check multiple reducedPeriods
+    // Test Case 8: Invalid null kind
     @Test
-    public void testCalculateValidMultipleReducedPeriods123(){
+    public void testCalculateInvalidNullKind(){
+        reducedPeriods.add(new Period(18,24));
+        normalPeriods.add(new Period(8,18));
+        normalRate = BigDecimal.valueOf(2);
+        reducedRate = BigDecimal.valueOf(1);
+        rate = new Rate(null, reducedPeriods, normalPeriods, normalRate, reducedRate);
+        Period testPeriod = new Period(17, 18);
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> rate.calculate(testPeriod)
+        );
+    }
+    // Test Case 9: Valid Check multiple reducedPeriods
+    @Test
+    public void testCalculateValidMultipleReducedPeriods2(){
+        reducedPeriods.add(new Period(1,10));
+        reducedPeriods.add(new Period(11,15));
         normalPeriods.add(new Period(22,23));
-        normalPeriods.add(new Period(21,22));
-        normalPeriods.add(new Period(10,11));
-        normalRate = new BigDecimal(2);
-        reducedRate = new BigDecimal(1);
-        rate = new Rate(CarParkKind.STUDENT, null, normalPeriods, normalRate, reducedRate);
-        Period testPeriod = new Period(0,24);
-        BigDecimal expectedOutput = new BigDecimal(19);
-        assertEquals(expectedOutput, rate.calculate(testPeriod));
+        normalRate = BigDecimal.valueOf(2);
+        reducedRate = BigDecimal.valueOf(1);
+        rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate);
+        Period testPeriod = null;
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> rate.calculate(testPeriod)
+        );
     }
 }

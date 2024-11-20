@@ -158,16 +158,24 @@ public class PionkDawidTestTaskPeriod2 {
         period2 = new Period(0, 24);
         assertTrue(period.overlaps(period2));
     }
-
-    ////////////////// Testing Area BElOW ////////////////////////
-    // Test Case 7: invalid too low startHour
+    // Test Case 6: Invalid null period parameter
     @Test
-    public void testPeriodInvalidTooLowStart111() {
-        int start = null;
-        int end = null;
+    public void testOverlapInvalidNullPeriodParameter() {
+        period = new Period(11, 12);
+        period2 = null;
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new Period(start, end)
+                () -> period.overlaps(period2)
+        );
+    }
+    // Test Case 7: Invalid null currentPeriod parameter
+    @Test
+    public void testOverlapInvalidNullPeriodParameter1() {
+        period = null;
+        period2 = new Period(11, 12);
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> period.overlaps(period2)
         );
     }
 }
