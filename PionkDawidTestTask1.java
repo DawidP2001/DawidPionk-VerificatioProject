@@ -2,7 +2,7 @@
 //Purpose: Task 1 Ver Project
 
 //package cm;
-/*
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThrows;
@@ -429,4 +429,4 @@ public class PionkDawidTestTask1 {
             assertFalse("periods aren't overlaping", period.overlap(period2));
         }
     }
-} */
+} 
