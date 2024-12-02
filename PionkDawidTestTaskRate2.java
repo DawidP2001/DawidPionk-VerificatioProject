@@ -9,6 +9,8 @@ package cm;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import cm.CarParkKind;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
@@ -443,5 +445,17 @@ public class PionkDawidTestTaskRate2 {
                 IllegalArgumentException.class,
                 () -> rate.calculate(testPeriod)
         );
+    }
+    // Test Case 10: valid carParkKind of type visitor
+    @Test
+    public void testCalculateValidVisitorKind(){
+        reducedPeriods.add(new Period(8,18));
+        normalPeriods.add(new Period(18,24));
+        normalRate = BigDecimal.valueOf(2);
+        reducedRate = BigDecimal.valueOf(1);
+        rate = new Rate(CarParkKind.VISITOR, reducedPeriods, normalPeriods, normalRate, reducedRate);
+        Period testPeriod = new Period(17, 19);
+        BigDecimal expectedOutput = BigDecimal.valueOf(3);
+        assertEquals(expectedOutput, rate.calculate(testPeriod));
     }
 }
