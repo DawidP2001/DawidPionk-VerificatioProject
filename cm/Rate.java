@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Rate {
-    private CarParkKind kind;
+    private final CarParkKind kind;
     private BigDecimal hourlyNormalRate;
     private BigDecimal hourlyReducedRate;
     private ArrayList<Period> reduced = new ArrayList<>();
@@ -42,7 +42,6 @@ public class Rate {
         this.reduced = reducedPeriods;
         this.normal = normalPeriods;
     }
-
     /**
      * Checks if two collections of periods are valid together
      * @param periods1
@@ -94,20 +93,14 @@ public class Rate {
         return isValid;
     }
     public BigDecimal calculate(Period periodStay) {
-        if (periodStay == null){
+        if (periodStay == null) {
             throw new IllegalArgumentException("periodStay can't be null");
         }
         BigDecimal normalRateHours = BigDecimal.valueOf(periodStay.occurences(normal));
         BigDecimal reducedRateHours = BigDecimal.valueOf(periodStay.occurences(reduced));
         BigDecimal result = hourlyNormalRate.multiply((this.hourlyNormalRate.multiply(normalRateHours)).add(
                 this.hourlyReducedRate.multiply(reducedRateHours)));
-        if(this.kind == CarParkKind.VISITOR){
-            if(result.compareTo(BigDecimal.valueOf(10)) <= 0){
-                return BigDecimal.valueOf(0);
-            }
-        }
-
+        if(kind = )
         return result;
     }
-
 }
