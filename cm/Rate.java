@@ -104,7 +104,6 @@ public class Rate {
         BigDecimal normalRateHours = BigDecimal.valueOf(periodStay.occurrences(normal));
         BigDecimal reducedRateHours = BigDecimal.valueOf(periodStay.occurrences(reduced));
 
-
         return strategy.strategyCalculation(this.hourlyNormalRate, this.hourlyReducedRate,
                 normalRateHours, reducedRateHours);
     }

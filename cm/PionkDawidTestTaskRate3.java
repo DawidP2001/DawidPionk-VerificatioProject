@@ -461,4 +461,17 @@ public class PionkDawidTestTaskRate3 {
         BigDecimal expectedOutput = BigDecimal.valueOf(0);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
     }
+    // Test Case 11: Valid Visitor high price fare
+    @Test
+    public void testCalculateValidVisitorHighPriceFare(){
+        normalPeriods.add(new Period(0,12));
+        reducedPeriods.add(new Period(13,24));
+        normalRate = BigDecimal.valueOf(2);
+        reducedRate = BigDecimal.valueOf(1);
+        strategy = new VisitorStrategy();
+        rate = new Rate(CarParkKind.VISITOR, reducedPeriods, normalPeriods, normalRate, reducedRate, strategy);
+        Period testPeriod = new Period(0,24);
+        BigDecimal expectedOutput = BigDecimal.valueOf(12.5);
+        assertEquals(expectedOutput, rate.calculate(testPeriod));
+    }
 }
