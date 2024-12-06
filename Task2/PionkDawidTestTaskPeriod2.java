@@ -5,8 +5,9 @@
 
 //////////////////////////////////////////////////////////////////
 
-package cm;
+package Task2;
 
+import cm.Period;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

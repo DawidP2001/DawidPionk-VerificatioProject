@@ -4,8 +4,10 @@
 //Student Number:   C00273530
 
 //////////////////////////////////////////////////////////////////
-package cm;
+package Task2;
 
+import cm.Period;
+import cm.Rate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

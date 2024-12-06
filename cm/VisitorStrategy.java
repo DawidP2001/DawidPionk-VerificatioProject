@@ -3,18 +3,17 @@ package cm;
 import java.math.BigDecimal;
 
 public class VisitorStrategy implements  RateStrategy{
-    private Period period;
 
-    public VisitorStrategy(Period period){
-
+    public VisitorStrategy(){
     }
 
     @Override
-    public BigDecimal calculate() {
-        BigDecimal result = hourlyNormalRate.multiply((this.hourlyNormalRate.multiply(normalRateHours)).add(
-                this.hourlyReducedRate.multiply(reducedRateHours)));
+    public BigDecimal strategyCalculation(BigDecimal hourlyNormalRate, BigDecimal hourlyReducedRate,
+                                          BigDecimal normalRateHours, BigDecimal reducedRateHours) {
+        BigDecimal result = hourlyNormalRate.multiply((hourlyNormalRate.multiply(normalRateHours)).add(
+                hourlyReducedRate.multiply(reducedRateHours)));
 
-        if(result.compareTo(BigDecimal.valueOf(10)) <= 0){
+        if(result.compareTo(BigDecimal.valueOf(10)) > 0){
             return BigDecimal.valueOf(0);
         }
 

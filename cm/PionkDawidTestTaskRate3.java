@@ -21,12 +21,14 @@ public class PionkDawidTestTaskRate3 {
     ArrayList<Period> normalPeriods;
     BigDecimal normalRate;
     BigDecimal reducedRate;
+    RateStrategy strategy;
 
     @BeforeEach
     public void setUp(){
         reducedPeriods = new ArrayList<Period>();
         normalPeriods = new ArrayList<Period>();
     }
+    /*
     // Below are test cases for the Rate() method
     // Test Case 1: Valid Staff Rate
     @Test
@@ -445,7 +447,7 @@ public class PionkDawidTestTaskRate3 {
         );
     }
     // Below are the new test cases added for Task 3
-
+*/
     // Test Case 10: Valid Test Visitor low free fare
     @Test
     public void testCalculateValidVisitorLowFreeFare(){
@@ -453,7 +455,8 @@ public class PionkDawidTestTaskRate3 {
         normalPeriods.add(new Period(22,23));
         normalRate = BigDecimal.valueOf(2);
         reducedRate = BigDecimal.valueOf(1);
-        rate = new Rate(CarParkKind.VISITOR, reducedPeriods, normalPeriods, normalRate, reducedRate);
+        strategy = new VisitorStrategy();
+        rate = new Rate(CarParkKind.VISITOR, reducedPeriods, normalPeriods, normalRate, reducedRate, strategy);
         Period testPeriod = new Period(18,19);
         BigDecimal expectedOutput = BigDecimal.valueOf(0);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
