@@ -14,6 +14,10 @@ public class StaffStrategy implements  RateStrategy{
         BigDecimal result = (hourlyNormalRate.multiply(normalRateHours)).add(
                 hourlyReducedRate.multiply(reducedRateHours));
 
+        if (result.compareTo(BigDecimal.valueOf(16)) > 0){
+            result = BigDecimal.valueOf(16);
+        }
+
         return result;
     }
 }
