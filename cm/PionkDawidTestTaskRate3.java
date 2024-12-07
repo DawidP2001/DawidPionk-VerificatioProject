@@ -474,4 +474,17 @@ public class PionkDawidTestTaskRate3 {
         BigDecimal expectedOutput = BigDecimal.valueOf(12.5);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
     }
+    // Test Case 12: Valid management minimum price
+    @Test
+    public void testCalculateValidManagementMinimumPrice(){
+        normalPeriods.add(new Period(8,18));
+        reducedPeriods.add(new Period(18,24));
+        normalRate = BigDecimal.valueOf(2);
+        reducedRate = BigDecimal.valueOf(1);
+        strategy = new ManagementStrategy();
+        rate = new Rate(CarParkKind.VISITOR, reducedPeriods, normalPeriods, normalRate, reducedRate, strategy);
+        Period testPeriod = new Period(11,12);
+        BigDecimal expectedOutput = BigDecimal.valueOf(4);
+        assertEquals(expectedOutput, rate.calculate(testPeriod));
+    }
 }
