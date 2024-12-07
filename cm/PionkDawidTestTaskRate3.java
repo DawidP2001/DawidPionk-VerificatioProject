@@ -456,7 +456,7 @@ public class PionkDawidTestTaskRate3 {
         normalRate = BigDecimal.valueOf(2);
         reducedRate = BigDecimal.valueOf(1);
         strategy = new VisitorStrategy();
-        rate = new Rate(CarParkKind.VISITOR, reducedPeriods, normalPeriods, normalRate, reducedRate, strategy);
+        rate = new Rate(reducedPeriods, normalPeriods, normalRate, reducedRate, strategy);
         Period testPeriod = new Period(18,19);
         BigDecimal expectedOutput = BigDecimal.valueOf(0);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
@@ -469,7 +469,7 @@ public class PionkDawidTestTaskRate3 {
         normalRate = BigDecimal.valueOf(2);
         reducedRate = BigDecimal.valueOf(1);
         strategy = new VisitorStrategy();
-        rate = new Rate(CarParkKind.VISITOR, reducedPeriods, normalPeriods, normalRate, reducedRate, strategy);
+        rate = new Rate(reducedPeriods, normalPeriods, normalRate, reducedRate, strategy);
         Period testPeriod = new Period(0,24);
         BigDecimal expectedOutput = BigDecimal.valueOf(12.5);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
@@ -482,7 +482,7 @@ public class PionkDawidTestTaskRate3 {
         normalRate = BigDecimal.valueOf(2);
         reducedRate = BigDecimal.valueOf(1);
         strategy = new ManagementStrategy();
-        rate = new Rate(CarParkKind.VISITOR, reducedPeriods, normalPeriods, normalRate, reducedRate, strategy);
+        rate = new Rate(reducedPeriods, normalPeriods, normalRate, reducedRate, strategy);
         Period testPeriod = new Period(11,12);
         BigDecimal expectedOutput = BigDecimal.valueOf(4);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
@@ -495,7 +495,7 @@ public class PionkDawidTestTaskRate3 {
         normalRate = BigDecimal.valueOf(2);
         reducedRate = BigDecimal.valueOf(1);
         strategy = new StudentStrategy();
-        rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate, strategy);
+        rate = new Rate(reducedPeriods, normalPeriods, normalRate, reducedRate, strategy);
         Period testPeriod = new Period(11,12);
         BigDecimal expectedOutput = BigDecimal.valueOf(2);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
@@ -508,9 +508,9 @@ public class PionkDawidTestTaskRate3 {
         normalRate = BigDecimal.valueOf(2);
         reducedRate = BigDecimal.valueOf(1);
         strategy = new StudentStrategy();
-        rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate, strategy);
+        rate = new Rate(reducedPeriods, normalPeriods, normalRate, reducedRate, strategy);
         Period testPeriod = new Period(0,24);
-        BigDecimal expectedOutput = BigDecimal.valueOf(19.50);
+        BigDecimal expectedOutput = new BigDecimal("19.50");
         assertEquals(expectedOutput, rate.calculate(testPeriod));
     }
 }

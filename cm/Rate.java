@@ -5,14 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Rate {
-    private final CarParkKind kind;
     private final BigDecimal hourlyNormalRate;
     private final BigDecimal hourlyReducedRate;
     private final ArrayList<Period> reduced;
     private final ArrayList<Period> normal;
     private RateStrategy strategy;
 
-    public Rate(CarParkKind kind, ArrayList<Period> reducedPeriods, ArrayList<Period> normalPeriods,
+    public Rate(ArrayList<Period> reducedPeriods, ArrayList<Period> normalPeriods,
                 BigDecimal normalRate, BigDecimal reducedRate, RateStrategy strategy) {
         if (reducedPeriods == null || normalPeriods == null) {
             throw new IllegalArgumentException("periods cannot be null");
@@ -35,13 +34,9 @@ public class Rate {
         if (!isValidPeriods(reducedPeriods, normalPeriods)) {
             throw new IllegalArgumentException("The periods overlaps");
         }
-        if(kind == null){
-            throw new IllegalArgumentException("Kind can't be null");
-        }
         if(strategy==null){
             throw new IllegalArgumentException("Strategy can't be null");
         }
-        this.kind = kind;
         this.hourlyNormalRate = normalRate;
         this.hourlyReducedRate = reducedRate;
         this.reduced = reducedPeriods;
