@@ -448,7 +448,7 @@ public class PionkDawidTestTaskRate3 {
     }
     // Below are the new test cases added for Task 3
 */
-    // Test Case 10: Valid Test Visitor low free fare
+    // Test Case 10: Valid Test Visitor Strategy low free fare
     @Test
     public void testCalculateValidVisitorLowFreeFare(){
         reducedPeriods.add(new Period(11,15));
@@ -461,7 +461,7 @@ public class PionkDawidTestTaskRate3 {
         BigDecimal expectedOutput = BigDecimal.valueOf(0);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
     }
-    // Test Case 11: Valid Visitor high price fare
+    // Test Case 11: Valid Visitor Strategy high price fare
     @Test
     public void testCalculateValidVisitorHighPriceFare(){
         normalPeriods.add(new Period(0,12));
@@ -474,7 +474,7 @@ public class PionkDawidTestTaskRate3 {
         BigDecimal expectedOutput = BigDecimal.valueOf(12.5);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
     }
-    // Test Case 12: Valid management minimum price
+    // Test Case 12: Valid management Strategy minimum price
     @Test
     public void testCalculateValidManagementMinimumPrice(){
         normalPeriods.add(new Period(8,18));
@@ -485,6 +485,32 @@ public class PionkDawidTestTaskRate3 {
         rate = new Rate(CarParkKind.VISITOR, reducedPeriods, normalPeriods, normalRate, reducedRate, strategy);
         Period testPeriod = new Period(11,12);
         BigDecimal expectedOutput = BigDecimal.valueOf(4);
+        assertEquals(expectedOutput, rate.calculate(testPeriod));
+    }
+    // Test Case 14: Valid Student Strategy low price
+    @Test
+    public void testCalculateValidStudentLowPrice(){
+        normalPeriods.add(new Period(8,18));
+        reducedPeriods.add(new Period(18,24));
+        normalRate = BigDecimal.valueOf(2);
+        reducedRate = BigDecimal.valueOf(1);
+        strategy = new StudentStrategy();
+        rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate, strategy);
+        Period testPeriod = new Period(11,12);
+        BigDecimal expectedOutput = BigDecimal.valueOf(2);
+        assertEquals(expectedOutput, rate.calculate(testPeriod));
+    }
+    // Test Case 15: Valid Student Strategy High price
+    @Test
+    public void testCalculateValidStudentHighPrice(){
+        normalPeriods.add(new Period(8,18));
+        reducedPeriods.add(new Period(18,24));
+        normalRate = BigDecimal.valueOf(2);
+        reducedRate = BigDecimal.valueOf(1);
+        strategy = new StudentStrategy();
+        rate = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, normalRate, reducedRate, strategy);
+        Period testPeriod = new Period(0,24);
+        BigDecimal expectedOutput = BigDecimal.valueOf(19.50);
         assertEquals(expectedOutput, rate.calculate(testPeriod));
     }
 }
