@@ -2,6 +2,9 @@ package cm;
 
 import java.math.BigDecimal;
 
+/**
+ * This class holds the strategy for the management Car Park Kind
+ */
 public class ManagementStrategy implements  RateStrategy{
 
     public ManagementStrategy(){

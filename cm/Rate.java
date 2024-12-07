@@ -9,7 +9,7 @@ public class Rate {
     private final BigDecimal hourlyReducedRate;
     private final ArrayList<Period> reduced;
     private final ArrayList<Period> normal;
-    private RateStrategy strategy;
+    private final RateStrategy strategy;
 
     public Rate(ArrayList<Period> reducedPeriods, ArrayList<Period> normalPeriods,
                 BigDecimal normalRate, BigDecimal reducedRate, RateStrategy strategy) {

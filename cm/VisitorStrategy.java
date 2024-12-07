@@ -2,6 +2,9 @@ package cm;
 
 import java.math.BigDecimal;
 
+/**
+ * This class holds the strategy for the visitor Car Park Kind
+ */
 public class VisitorStrategy implements  RateStrategy{
 
     public VisitorStrategy(){
