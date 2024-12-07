@@ -513,4 +513,17 @@ public class PionkDawidTestTaskRate3 {
         BigDecimal expectedOutput = new BigDecimal("19.50");
         assertEquals(expectedOutput, rate.calculate(testPeriod));
     }
+    // Test Case 16: Valid Staff Strategy low price
+    @Test
+    public void testCalculateValidStaffLowPrice(){
+        normalPeriods.add(new Period(8,18));
+        reducedPeriods.add(new Period(18,24));
+        normalRate = BigDecimal.valueOf(2);
+        reducedRate = BigDecimal.valueOf(1);
+        strategy = new StaffStrategy();
+        rate = new Rate(reducedPeriods, normalPeriods, normalRate, reducedRate, strategy);
+        Period testPeriod = new Period(11,12);
+        BigDecimal expectedOutput = BigDecimal.valueOf(2);
+        assertEquals(expectedOutput, rate.calculate(testPeriod));
+    }
 }
